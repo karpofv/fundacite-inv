@@ -15,16 +15,10 @@ $salida = $_POST[salida];
 $editar = $_POST[editar];
 $eliminar = $_POST[eliminar];
 if($editar==1 and $motivo!="" and $codigomov==""){
-    $fecdev = paraTodos::deconvertDate($fecdev);
-    $entrada = paraTodos::deconvertDate($entrada);
-    $salida = paraTodos::deconvertDate($salida);
     $insertar = paraTodos::arrayInserte("mov_compcodigo, mov_solicitante,mov_solresp, mov_motivo,mov_fechadev, mov_respdep, mov_perresp, mov_entrada, mov_salida", "movimientos", "$codigo, '$depsol','$solresp', '$motivo', '$fecdev', '$depresp', '$perresp', '$entrada', '$salida'");
 }
 
 if($editar==1 and $motivo!="" and $codigomov!=""){ 
-    $fecdev = paraTodos::deconvertDate($fecdev);
-    $entrada = paraTodos::deconvertDate($entrada);
-    $salida = paraTodos::deconvertDate($salida);    
     $update = paraTodos::arrayUpdate("mov_compcodigo='$codigo', mov_solicitante='$depsol',mov_solresp='$solresp', mov_motivo='$motivo',mov_fechadev='$fecdev', mov_respdep='$depresp', mov_perresp='$perresp', mov_entrada='$entrada', mov_salida='$salida'", "movimientos", "mov_codigo=$codigomov");
     $codigomov="";
 }
@@ -100,8 +94,8 @@ if($editar==1 and $motivo=="" and $codigomov!=""){
                                              type:'POST',
                                             data:{
                                             dmn 	: <?php echo $idMenut;?>,
-                                            codigo 	: <?php echo $codigo;?>,
-                                            codigomov 	: <?php echo $codigomov;?>,
+                                            codigo 	: '<?php echo $codigo;?>',
+                                            codigomov 	: '<?php echo $codigomov;?>',
                                             depsol 	: $('#depsol').val(),
                                             solresp 	: $('#solresp').val(),
                                             motivo 	: $('#motivo').val(),
@@ -130,7 +124,7 @@ if($editar==1 and $motivo=="" and $codigomov!=""){
                                 <input class="form-control" id="motivo" type="text" value="<?php echo $motivo;?>"> </div>
                             <div class="col-xs-4">
                                 <label class="control-label">Fecha de devolución</label>
-                                <input class="form-control" id="fecdev" type="text" value="<?php echo paraTodos::convertDate($fecdev);?>"> </div>
+                                <input class="form-control" id="fecdev" type="date" value="<?php echo $fecdev;?>"> </div>
                             <div class="col-xs-7">
                                 <label class="control-label">Departamento Responsable</label>
                                 <input class="form-control" id="depresp" type="text" value="<?php echo $depresp?>"> </div>
@@ -139,10 +133,10 @@ if($editar==1 and $motivo=="" and $codigomov!=""){
                                 <input class="form-control" id="perresp" type="text" value="<?php echo $perresp;?>"> </div>
                             <div class="col-xs-3">
                                 <label class="control-label">Fecha de entrada</label>
-                                <input class="form-control" id="entrada" type="text" value="<?php echo paraTodos::convertDate($entrada);?>"> </div>
+                                <input class="form-control" id="entrada" type="date" value="<?php echo $entrada;?>"> </div>
                             <div class="col-xs-3">
                                 <label class="control-label">Fecha de salida</label>
-                                <input class="form-control" id="salida" type="text" value="<?php echo paraTodos::convertDate($salida);?>"> </div>
+                                <input class="form-control" id="salida" type="date" value="<?php echo $salida;?>"> </div>
                             <div class="col-sm-2">
                                 <br>
                                 <button class="btn btn-success" type="submit">Guardar</button>
@@ -207,8 +201,8 @@ if($editar==1 and $motivo=="" and $codigomov!=""){
                                                             type:'POST',
                                                             data:{
                                                             dmn 	: <?php echo $idMenut;?>,
-                                                            codigo 	: <?php echo $codigo;?>,
-                                                            codigomov 	: <?php echo $row[mov_codigo];?>,
+                                                            codigo 	: '<?php echo $codigo;?>',
+                                                            codigomov 	: '<?php echo $row[mov_codigo];?>',
                                                             editar 	: 1,
                                                             ver 	: 2,
                                                             act     : 3
@@ -224,7 +218,7 @@ if($editar==1 and $motivo=="" and $codigomov!=""){
                                                             data:{
                                                             dmn 	: <?php echo $idMenut;?>,
                                                             codigo 	: <?php echo $codigo;?>,
-                                                            codigomov 	: <?php echo $row[mov_codigo];?>,
+                                                            codigomov 	: '<?php echo $row[mov_codigo];?>',
                                                             eliminar 	: 1,
                                                             ver 	: 2,
                                                             act     : 3

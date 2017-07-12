@@ -87,8 +87,8 @@ if($editar == 1 and $codigo !="" and $nombre==""){
                                         <td class="text-center"><strong>Fecha de respuesta</strong></td>
                                         <td class="text-center"><strong>Respuesta</strong></td>
                                         <td class="text-center"><strong>Estado</strong></td>
-                                        <td class="text-center"><strong>Responder</strong></td>
-                                        <td class="text-center"><strong>Eliminar</strong></td>
+                                        <!--<td class="text-center"><strong>Responder</strong></td>
+                                        <td class="text-center"><strong>Eliminar</strong></td>-->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -111,56 +111,7 @@ if($editar == 1 and $codigo !="" and $nombre==""){
                                             </td>
                                             <td class="text-center">
                                                 <?php echo utf8_decode($row[est_descripcion]);?>
-                                            </td>
-                                            <td class="text-center"> 
-                                                <?php
-                                                if($row[rep_respuesta]==""){
-                                                ?>                                                
-                                                <a href="javascript:void(0);" onclick="$.ajax({
-                                                            url:'accion.php',
-                                                            type:'POST',
-                                                            data:{
-                                                            dmn 	: <?php echo $idMenut;?>,
-                                                            codigo 	: <?php echo $codigo;?>,
-                                                            codigorep 	: <?php echo $row[rep_codigo];?>,
-                                                            ver 	: 2,
-                                                            act     : 2
-                                                            },
-                                                            success : function (html) {
-                                                            $('#ventanaVer').html(html);
-                                                            },
-                                                            }); return false;" style="color:green;"><i class="fa fa-share" aria-hidden="true"></i>
-                                                </a>
-                                                <?php
-                                                }
-                                                ?>
-                                            </td>
-                                            <?php
-                                            ?>
-                                            <td class="text-center">
-                                                <?php
-                                                if($row[rep_respuesta]==""){
-                                                ?>
-                                                <a href="javascript:void(0);" onclick="$.ajax({
-                                                            url:'accion.php',
-                                                            type:'POST',
-                                                            data:{
-                                                            dmn 	: <?php echo $idMenut;?>,
-                                                            codigo 	: <?php echo $codigo;?>,
-                                                            codigorep 	: <?php echo $row[rep_codigo];?>,
-                                                            eliminar 	: 1,
-                                                            ver 	: 2,
-                                                            act     : 2
-                                                            },
-                                                            success : function (html) {
-                                                            $('#ventanaVer').html(html);
-                                                            },
-                                                            }); return false;" style="color:green;"><i class="fa fa-eraser" aria-hidden="true"></i>
-                                                </a>
-                                                <?php
-                                                }
-                                                ?>
-                                            </td>
+                                            </td>                                            
                                         </tr>
                                         <?php
                                         }
